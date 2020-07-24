@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>AndroidDev</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/blog-home.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Android - SQLite</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="sqlite.html">SQLite
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="configuracion.html">Configuracion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logicas.html">Logicas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fragment.html">Fragments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Git-Github</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mapLocation.html">Map & Location</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="arquitectura.html">Arquitectura</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="debug.html">Debug</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">Git-Github
+          
+        </h1>
+
+        <!-- Blog Post -->
+        
+ <!-- 
+     *********************************************************
+     *********************************************************
+     *********************************************************
+ -->
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          
+          <div class="card-body"> <!--
+            <h2 class="card-title">Cambiar nombre Proyecto </h2>
+            <img class="card-img-top" src="IMG/GIT/copiar.png" alt="Card image cap">
+            <p class="card-text">Se puede iniciar con un proyecto clonado de <b>GitHub</b> o copiando un proyecto que ya exista. Lo primero que hacemos es colocarle el nuevo nombre a la carpeta en donde queremos hacer el cambio</p>
+           
+            <p class="card-text">Abrimos AnSt sin dejar que carguen los proyectos de la memoria, 
+              como la nueva copia no se ha utilizado, no aparece en el listado de la izquierda; así que abrimos <b>Open an existing Android Studio proyect</b>, con lo cual se abre el directorio, ubicamos la carpeta carpeta a la que recién asignamos el nuevo nombre y damos click en <b> ok</b></p>
+          <img class="card-img-top" src="IMG/GIT/fil3.png" alt="Card image cap">
+           
+           <p class="card-text">Al abrir el directorio de este proyecto, se observa como aún conserva el antiguo nombre en algunas carpetas y la dirección; Iniciamos separando las carpetas que almacenan los archivos .java: seleccionando la primera carpeta, abriendo el engranaje de opciones y deseleccionando <i>Compact Middle Package</i>, con lo cual la carpeta inicial se separa en tres, en donde cada nombre corresponde con el inicial, separado por el punto</p>
+          <img class="card-img-top" src="IMG/GIT/fil4.png" alt="Card image cap">
+           
+          <p class="card-text">Damos Click derecho en la carpeta que queremos tenga el nuevo nombre del proyecto, seleccionamos <b>refactor</b>, luego <b>rename</b></p>
+          <img class="card-img-top" src="IMG/GIT/fil5.png" alt="Card image cap">
+
+          <p class="card-text">Aparecen una ventana de advertencia (Warning) y damos clic en <b>Rename package</b>.</p>
+          <img class="card-img-top" src="IMG/GIT/fil6.png" alt="Card image cap">
+
+          <p class="card-text">Aparece una nueva ventana, <i>Rename</i>, se coloca el nuevo nombre en la primera pestaña de opciones y se da click en <b>Refactor</b>.</p>
+          <img class="card-img-top" src="IMG/GIT/fil7.png" alt="Card image cap">
+
+          <p class="card-text">Se abre la pantalla de <i>find</i>, mostrando todas las carpetas relacionadas y volvemos a dar click en <b>Do Refactor</b>.</p>
+          <img class="card-img-top" src="IMG/GIT/fil8.png" alt="Card image cap">
+
+          <p class="card-text">Android estudio nos indica que algunos archivos tienen nombre inválidos, pero eso se corrige más adelante cuando se sincronice el <i>gradle</i>.</p>
+          <img class="card-img-top" src="IMG/GIT/fil9.png" alt="Card image cap">
+
+          <p class="card-text">Ahora nos dirigimos al archivo <i>Build.gradle(Module:app)</i> y cambiamos el nombre en la línea: <i>applicationId</i>, teniendo presente que cada punto indica el nombre de una carpeta</p>
+          <img class="card-img-top" src="IMG/GIT/fil10.png" alt="Card image cap">
+
+          <p class="card-text">Sincronizamos la información de <i>gradle</i>, para que la información se actualice</p>
+          <img class="card-img-top" src="IMG/GIT/fil11.png" alt="Card image cap">
+
+          <p class="card-text">En la pestaña <i>Build</i>, seleccionamos <b>Rebuild Project</b> y esperamos que Android Studio actualice</p>
+          <img class="card-img-top" src="IMG/GIT/fil12.png" alt="Card image cap">
+
+          <p class="card-text">En el archivo string.xml se cambia el valor del atributo <i>”app_name”</i> con el correspondiente al nuevo nombre, luego en <b>file</b>, seleccionamos: <b>sabe all</b> y reiniciamos Android Studio</p>
+          <img class="card-img-top" src="IMG/GIT/fil13.png" alt="Card image cap">
+              -->
+          </div>
+          <div class="card-footer text-muted">
+            Publicado en Julio 24, 2020 by
+            <a href="#">Armando Pinzon</a>
+          </div>
+        </div>
+
+        <!-- Blog Post -->
+        <!--
+        <div class="card mb-4">
+          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">Post Title</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on January 1, 2020 by
+            <a href="#">Start Bootstrap</a>
+          </div>
+        </div>
+      -->
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">&larr; Anterior</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Siguiente &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Buscar</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="search" class="form-control" placeholder="En Android Developers...">
+              <span class="input-group-append">
+                <button class="btn btn-secondary" type="button">Ir!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Temas</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Clonar de Github</a>
+                  </li>
+                  <li>
+                    <a href="#">Enlazar con-Github</a>
+                  </li>
+                  <li>
+                    <a href="#">Exportar</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Comando GitBash</a>
+                  </li>
+                  <li>
+                    <a href="#">Otro</a>
+                  </li>
+                
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Guia Android Studio</h5>
+          <div class="card-body">
+            Este Blog buscar ser un complemento a los tutoriales de Android Studio para colocar a disposición guías fotográficas de los procedimientos más comunes, con los cuales se pueda construir aplicaciones completas para subir en el Android Store.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; www.armandopinzonv.tk</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -82,51 +82,179 @@
         <!-- Blog Post -->
         <div class="card mb-4">
           
-          <div class="card-body"> <!--
-            <h2 class="card-title">Cambiar nombre Proyecto </h2>
-            <img class="card-img-top" src="IMG/GIT/copiar.png" alt="Card image cap">
-            <p class="card-text">Se puede iniciar con un proyecto clonado de <b>GitHub</b> o copiando un proyecto que ya exista. Lo primero que hacemos es colocarle el nuevo nombre a la carpeta en donde queremos hacer el cambio</p>
+          <div class="card-body"> 
+            <h2 class="card-title">Verificar GPS-on </h2>
+            <img class="card-img-top" src="IMG/LOCATION/gps3.png" alt="Card image cap">
+            <p class="card-text"> Este procedimiento consiste en un <i>if</i>, que verifica la disponibilidad de la ubicación mediante <i>LocationManager</i>, en caso de no tenerla envía a un método que le pide al usuario iniciar la ubicación a través del GPS. Este <i>if</i> se ubica en el método <i>onCreate</i> del activity en donde queremos hacer la verificación, preferiblemente anterior al activity que lo emplea, </p>
            
-            <p class="card-text">Abrimos AnSt sin dejar que carguen los proyectos de la memoria, 
-              como la nueva copia no se ha utilizado, no aparece en el listado de la izquierda; así que abrimos <b>Open an existing Android Studio proyect</b>, con lo cual se abre el directorio, ubicamos la carpeta carpeta a la que recién asignamos el nuevo nombre y damos click en <b> ok</b></p>
-          <img class="card-img-top" src="IMG/GIT/fil3.png" alt="Card image cap">
+            <p class="card-text"> En el metodo onCreate colocamos el siguiente fragmento:<br>
+            <pre class="pre">  LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                   if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                   buildAlertMessageNoGps();
+                   }</pre>          
+
+             </p>
+
+          <img class="card-img-top" src="IMG/LOCATION/gps1.png" alt="Card image cap">
            
-           <p class="card-text">Al abrir el directorio de este proyecto, se observa como aún conserva el antiguo nombre en algunas carpetas y la dirección; Iniciamos separando las carpetas que almacenan los archivos .java: seleccionando la primera carpeta, abriendo el engranaje de opciones y deseleccionando <i>Compact Middle Package</i>, con lo cual la carpeta inicial se separa en tres, en donde cada nombre corresponde con el inicial, separado por el punto</p>
-          <img class="card-img-top" src="IMG/GIT/fil4.png" alt="Card image cap">
+           <p class="card-text">Adicionalmente creamos un método (llamado: buildAlertMessageNoGps), el cual va a abrir una ventana de alerta que le indica al usuario prender el GPS, mediante: <i>AlertDialog.Builder</i>; tengamos presente que este método es llamado con el <i>”if”</i>en caso de no detectar datos de GPS</p>
+          <pre class="pre">    private void buildAlertMessageNoGps() {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Tu GPS Debe estar habilitado, quieres iniciarlo?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                            dialog.cancel();
+                        }
+                    });
+            final AlertDialog alert = builder.create();
+            alert.show();
+          } </pre>
+          
+           <img class="card-img-top" src="IMG/LOCATION/gps4.png" alt="Card image cap">
            
-          <p class="card-text">Damos Click derecho en la carpeta que queremos tenga el nuevo nombre del proyecto, seleccionamos <b>refactor</b>, luego <b>rename</b></p>
-          <img class="card-img-top" src="IMG/GIT/fil5.png" alt="Card image cap">
-
-          <p class="card-text">Aparecen una ventana de advertencia (Warning) y damos clic en <b>Rename package</b>.</p>
-          <img class="card-img-top" src="IMG/GIT/fil6.png" alt="Card image cap">
-
-          <p class="card-text">Aparece una nueva ventana, <i>Rename</i>, se coloca el nuevo nombre en la primera pestaña de opciones y se da click en <b>Refactor</b>.</p>
-          <img class="card-img-top" src="IMG/GIT/fil7.png" alt="Card image cap">
-
-          <p class="card-text">Se abre la pantalla de <i>find</i>, mostrando todas las carpetas relacionadas y volvemos a dar click en <b>Do Refactor</b>.</p>
-          <img class="card-img-top" src="IMG/GIT/fil8.png" alt="Card image cap">
-
-          <p class="card-text">Android estudio nos indica que algunos archivos tienen nombre inválidos, pero eso se corrige más adelante cuando se sincronice el <i>gradle</i>.</p>
-          <img class="card-img-top" src="IMG/GIT/fil9.png" alt="Card image cap">
-
-          <p class="card-text">Ahora nos dirigimos al archivo <i>Build.gradle(Module:app)</i> y cambiamos el nombre en la línea: <i>applicationId</i>, teniendo presente que cada punto indica el nombre de una carpeta</p>
-          <img class="card-img-top" src="IMG/GIT/fil10.png" alt="Card image cap">
-
-          <p class="card-text">Sincronizamos la información de <i>gradle</i>, para que la información se actualice</p>
-          <img class="card-img-top" src="IMG/GIT/fil11.png" alt="Card image cap">
-
-          <p class="card-text">En la pestaña <i>Build</i>, seleccionamos <b>Rebuild Project</b> y esperamos que Android Studio actualice</p>
-          <img class="card-img-top" src="IMG/GIT/fil12.png" alt="Card image cap">
-
-          <p class="card-text">En el archivo string.xml se cambia el valor del atributo <i>”app_name”</i> con el correspondiente al nuevo nombre, luego en <b>file</b>, seleccionamos: <b>sabe all</b> y reiniciamos Android Studio</p>
-          <img class="card-img-top" src="IMG/GIT/fil13.png" alt="Card image cap">
-              -->
           </div>
           <div class="card-footer text-muted">
-            Publicado en Julio 24, 2020 by
-            <a href="#">Armando Pinzon</a>
+            Publicado en Julio 28, 2020 by
+            <a href="https://armandopinzonvera.github.io/Portafolio2020/" target="blank">Armando Pinzon</a>
           </div>
         </div>
+
+
+         <!-- 
+     *********************************************************
+     *********************************************************
+     *********************************************************
+ -->
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          
+          <div class="card-body"> 
+            <h2 class="card-title">Tener ubicación </h2>
+            
+            <p class="card-text"> Para obtener los datos de ubicación (latitud, longitud, altura, velocidad, precisión) se deben seguir los siguientes pasos:  </p>
+                          
+             </p>
+             <ol>
+              <li class="nav-item">
+                <a class="nav-link">Agregar librerías del gradle (google play service)</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Permisos del manifest (ACCESS_COARSE_LOCATION)</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Agregar objeto FusedLocationProviderClient, 
+                  objeto LocationRequest y Se establecen propiedades del objeto LocationRequest 
+                  (setInterval, setFastesInterval, setPriority </a>
+              </li>           
+           
+              </ol>
+
+              <p class="card-text">1.  Para agregar la librería de <i>google play service - Location</i>, vamos a File/Project Structure/Dependencies/ en la ventana de <i>All Dependencies</i> <b>+</b><br>
+                Entramos a <i>Library Dependency</i> y en el buscador de la primera ventana (Step 1.), colocamos: <b> com.google.android.gms:play-services-location: </b>:<br>
+                Seleccionamos la última versión que nos indique en la ventana de abajo, le damos a <b>OK</b>, luego en la ventana que sigue <b>Apply</b> y <b>OK</b>.</br>
+                Verificamos la adecuada inclucion, en el archivo gradle, en donde ahora se debe ver en el atributo de dependecias: <i> implementation ' com.google.android.gms:play-services-location: 17.0.1'</i><br>
+                Cabe resaltar que en la presente foto también se observa la librería de <i>google-play</i>, la cual fue agregada con antelación y por defecto no viene incluida en los poyectos,  pero genera error, debido a que ella incluye -location; por consiguiente solo se deja la libreria de services-location: 17.0.1
+                  </p>
+
+          <img class="card-img-top" src="IMG/LOCATION/loc1.png" alt="Card image cap">   
+          <p></p>        
+           <img class="card-img-top" src="IMG/LOCATION/loc2.png" alt="Card image cap">
+           <p></p> 
+           <img class="card-img-top" src="IMG/LOCATION/loc3.png" alt="Card image cap">
+           <p></p>            
+           <img class="card-img-top" src="IMG/LOCATION/loc4.png" alt="Card image cap">
+           <p></p> 
+           <img class="card-img-top" src="IMG/LOCATION/loc5.png" alt="Card image cap">
+
+           <p class="card-text">2. para agregar el permiso en el Manifest, basta con colocar tres líneas de atributos <i>uses-permission</i>, para internet, coarse_location y fine_location; por fuera y siguiente al atributo <i> manifest</i>.
+              </p>
+           <img class="card-img-top" src="IMG/LOCATION/loc6.png" alt="Card image cap">   
+          <p></p>  
+          <p class="card-text">3. ahora nos dirigimos al archivo .java en donde queremos obtener la ubicación y colocamos el código. El cual está conformado por un bloque en donde declaramos una constante a la que llamaremos: <b>PERMISSIONS_FINE_LOCATION = 99</b>, las variables <b>FusedLocationProviderClient</b> y <b>LocationRequest</b> como variables generales; en la foto ademas se observa los enlaces con <TextView> en donde se colocaran los valores obtenidos.</br>
+            Además en el método <i>onCreate()</i>  inicializamos el objeto locationRequest, le declaramos las propiedades: setInterval(), setFastesInterval(), setPriority() y hacemos llamado al método en donde obtenemos los datos de ubicación(updateGps()), para crearlo posteriormente.
+              
+          </p>
+          <pre class="pre">   
+            TextView latitud, longitud;
+            FusedLocationProviderClient fusedLocationProviderClient;
+            LocationRequest locationRequest;
+        
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
+                latitud = findViewById(R.id.latitud);
+                longitud =findViewById(R.id.longitud);
+        
+                locationRequest = new LocationRequest();
+                locationRequest.setInterval(1000 * 30);
+                locationRequest.setFastestInterval(1000 * 50);
+                locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+                updateGPS();
+            }</pre>
+        <img class="card-img-top" src="IMG/LOCATION/loc7.png" alt="Card image cap">   
+          <p></p> 
+           
+          <p></p>  
+          <p class="card-text">4. En el método updateGPS() que recién creamos, inicializamos el objeto <i>fusedLocationProviderClient</i> con <b>LocationServices</b> y declaramos un <b>if-else</b> que verifica el permiso, en caso de ser afirmativo nos remite a otro método(con parámetros Location), que vamos a crear y llamar: <i>updateUIValues(Location location)</i><br>
+            <b><i><u>Precaución: en el fragmento de código siguiente, etiquetas de mayor y menor que; fueron incluidas con asterisco para que pudieran ser interpretadas por el <i>HTML</i>; pero no hacen parte del codigo</u></i></b>
+          </p>
+          <pre class="pre">   
+            private void updateGPS() {
+              fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
+              if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                  fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<*Location*>() {
+                      @Override
+                      public void onSuccess(Location location) {
+                          updateUIValues(location);
+                      }
+                  });
+              } else {
+                  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                      requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, PERMISSIONS_FINE_LOCATION);
+                  }
+              }
+          }
+            }</pre>
+        <img class="card-img-top" src="IMG/LOCATION/loc8.png" alt="Card image cap">   
+        <p></p>  
+        <p class="card-text">5. Desarrollamos el método (<i>updateUIValues(Location location)</i>) que es solicitado desde el anterior; en donde obtenemos los valores de ubicación mediante los métodos: <b>getLatitude()</b> y <b>getLongitude()</b>
+        </p>
+        <pre class="pre">   
+          private void updateUIValues(Location location) {
+            latitud.setText(String.valueOf(location.getLatitude()));
+            longitud.setText(String.valueOf(location.getLongitude()));
+        }
+        </pre>
+      <img class="card-img-top" src="IMG/LOCATION/loc9.png" alt="Card image cap"> 
+
+
+
+
+          </div>
+
+
+          <div class="card-footer text-muted">
+            Publicado en Julio 29, 2020 by
+            <a href="https://armandopinzonvera.github.io/Portafolio2020/" target="blank">Armando Pinzon</a>
+          </div>
+        </div>
+
+
+         <!-- 
+     *********************************************************
+     *********************************************************
+     *********************************************************
+ -->
+
+        <!-- Blog Post -->
 
         <!-- Blog Post -->
         <!--
@@ -146,7 +274,7 @@
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
           <li class="page-item">
-            <a class="page-link" href="#">&larr;Anterio</a>
+            <a class="page-link" href="#">&larr;Anterior</a>
           </li>
           <li class="page-item disabled">
             <a class="page-link" href="#">Siguiente &rarr;</a>
@@ -179,20 +307,20 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">Clonar de Github</a>
+                    <a href="#">Verificar GPS-on</a>
                   </li>
                   <li>
-                    <a href="#">Enlazar con-Github</a>
+                    <a href="#">obtener Ubicación</a>
                   </li>
                   <li>
-                    <a href="#">Exportar</a>
+                    <a href="#">Ubicacion en fragment</a>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">Comando GitBash</a>
+                    <a href="#">Colocar mapa</a>
                   </li>
                   <li>
                     <a href="#">Otro</a>
